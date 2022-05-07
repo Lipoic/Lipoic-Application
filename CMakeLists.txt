@@ -5,3 +5,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Lipoic_Application
         src/main.cpp)
+
+target_link_libraries(${PROJECT_NAME} SDL2 fmt)
