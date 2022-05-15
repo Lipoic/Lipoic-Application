@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lipoic/page/main_page.dart';
 
 void main() {
   runApp(const LipoicAPP());
@@ -17,26 +18,7 @@ class LipoicAPP extends StatelessWidget {
           textTheme: const TextTheme(
             subtitle1: TextStyle(fontFamilyFallback: ['Roboto', 'NotoSansTC']),
           )),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home page"),
-      ),
-      body: const Center(child: Text('hello world')),
+      home: const MainPage(),
     );
   }
 }
