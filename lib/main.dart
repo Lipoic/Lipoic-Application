@@ -12,8 +12,11 @@ class LipoicAPP extends StatelessWidget {
     return MaterialApp(
       title: 'Lipoic',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Roboto',
+          textTheme: const TextTheme(
+            subtitle1: TextStyle(fontFamilyFallback: ['Roboto', 'NotoSansTC']),
+          )),
       home: const HomePage(),
     );
   }
