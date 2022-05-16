@@ -11,7 +11,40 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Widget _loginWidget(BuildContext context) {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Material(
+          color: const Color(0xFF4D4D4D),
+          child: CustomPaint(
+              size: Size(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height),
+              painter: MyPainter(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height),
+              child: const _LoginWidget())),
+    );
+  }
+}
+
+class _LoginWidget extends StatefulWidget {
+  const _LoginWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<_LoginWidget> createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<_LoginWidget> {
+  bool keepLogin = true;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -54,9 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       children: [
                         Checkbox(
-                            value: true,
+                            value: keepLogin,
                             onChanged: (value) {
-                              value = !value!;
+                              keepLogin = value!;
+                              setState(() {});
                             }),
                         const Text(
                           "保持登入",
@@ -92,25 +126,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         )
       ],
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child: Material(
-          color: const Color(0xFF4D4D4D),
-          child: CustomPaint(
-              size: Size(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height),
-              painter: MyPainter(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height),
-              child: _loginWidget(context))),
     );
   }
 }
