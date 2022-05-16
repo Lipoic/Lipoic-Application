@@ -111,20 +111,13 @@ class _LoginWidgetState extends State<_LoginWidget> {
                   ],
                 ),
                 const SizedBox(height: 50),
-                TextButton(
-                    child: Container(
-                      color: const Color(0xFF7B6DD6),
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      height: 40,
-                      child: const Center(
-                          child: Text(
-                        "登入",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(color: Color(0xFFFFFFFF), fontSize: 18),
-                      )),
-                    ),
-                    onPressed: () {}),
+                SizedBox(
+                  width: 282,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("登入", style: AppTheme.text.mediumTitle),
+                  ),
+                ),
                 const SizedBox(height: 50),
               ],
             ),
@@ -145,7 +138,6 @@ class MyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print(size);
     drawRect(canvas);
   }
 

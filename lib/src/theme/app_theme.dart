@@ -21,6 +21,12 @@ class AppTheme {
       textTheme: const TextTheme(
         subtitle1: TextStyle(fontFamilyFallback: ['Roboto', 'NotoSansTC']),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              primary: color.purple, onPrimary: Colors.white)),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+              side: BorderSide(color: AppTheme.color.purple, width: 3))),
       useMaterial3: true);
 
   static const AppTextTheme text = AppTextTheme();

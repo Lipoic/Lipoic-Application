@@ -38,17 +38,13 @@ class _InitPageState extends State<InitPage> {
                         onPressed: () {
                           Navigator.pushNamed(context, LoginPage.routeName);
                         },
-                        style: buttonTextStyle.copyWith(
-                            backgroundColor: MaterialStateProperty.all(
-                                AppTheme.color.purple)),
+                        style: buttonTextStyle,
                         child: const Text("登入",
                             style: TextStyle(color: Colors.white)),
                       ),
                       OutlinedButton(
                           onPressed: () {},
-                          style: buttonTextStyle.copyWith(
-                              side: MaterialStateProperty.all(BorderSide(
-                                  color: AppTheme.color.purple, width: 3))),
+                          style: buttonTextStyle,
                           child: const Text("註冊")),
                     ],
                   ),
