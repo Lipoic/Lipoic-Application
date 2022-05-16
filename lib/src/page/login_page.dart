@@ -11,104 +11,93 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  void _showOverlay(BuildContext context) async {
-    OverlayState? overlayState = Overlay.of(context);
-    OverlayEntry overlayEntry;
-    overlayEntry = OverlayEntry(builder: (context) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.3,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Material(
-              color: const Color(0xFF4D4D4D),
-              child: Column(
-                children: [
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: 57,
-                      child: TextField(
-                        style: const TextStyle(color: Color(0xFFABABAB)),
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            fillColor: const Color(0x557C7B7B),
-                            filled: true),
-                      )),
-                  SizedBox(height: MediaQuery.of(context).size.width * 0.08),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: 57,
-                      child: TextField(
-                        style: const TextStyle(color: Color(0xFFABABAB)),
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            fillColor: const Color(0x557C7B7B),
-                            filled: true),
-                      )),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                              value: true,
-                              onChanged: (value) {
-                                value = !value!;
-                              }),
-                          const Text(
-                            "保持登入",
-                            style: TextStyle(
-                                fontSize: 15, color: Color(0xFFFFFFFF)),
-                          ),
-                        ],
-                      ),
-                      const Text(
-                        "忘記密碼 ?",
-                        style:
-                            TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 50),
-                  TextButton(
-                      child: Container(
-                        color: const Color(0xFF7B6DD6),
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        height: 40,
-                        child: const Center(
-                            child: Text(
-                          "登入",
-                          textAlign: TextAlign.center,
+  Widget _loginWidget(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.3,
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: Material(
+            color: const Color(0xFF4D4D4D),
+            child: Column(
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 57,
+                    child: TextField(
+                      style: const TextStyle(color: Color(0xFFABABAB)),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          fillColor: const Color(0x557C7B7B),
+                          filled: true),
+                    )),
+                SizedBox(height: MediaQuery.of(context).size.width * 0.08),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 57,
+                    child: TextField(
+                      style: const TextStyle(color: Color(0xFFABABAB)),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          fillColor: const Color(0x557C7B7B),
+                          filled: true),
+                    )),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: true,
+                            onChanged: (value) {
+                              value = !value!;
+                            }),
+                        const Text(
+                          "保持登入",
                           style:
-                              TextStyle(color: Color(0xFFFFFFFF), fontSize: 18),
-                        )),
-                      ),
-                      onPressed: () {}),
-                  const SizedBox(height: 50),
-                ],
-              ),
+                              TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
+                        ),
+                      ],
+                    ),
+                    const Text(
+                      "忘記密碼 ?",
+                      style: TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 50),
+                TextButton(
+                    child: Container(
+                      color: const Color(0xFF7B6DD6),
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      height: 40,
+                      child: const Center(
+                          child: Text(
+                        "登入",
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(color: Color(0xFFFFFFFF), fontSize: 18),
+                      )),
+                    ),
+                    onPressed: () {}),
+                const SizedBox(height: 50),
+              ],
             ),
-          )
-        ],
-      );
-    });
-
-    print(overlayEntry);
-    overlayState?.insert(overlayEntry);
+          ),
+        )
+      ],
+    );
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(microseconds: 1000), () {
-      _showOverlay(context);
-    });
   }
 
   @override
@@ -117,11 +106,11 @@ class _LoginPageState extends State<LoginPage> {
       child: Material(
           color: const Color(0xFF4D4D4D),
           child: CustomPaint(
-            size: Size(MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height),
-            painter: MyPainter(MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height),
-          )),
+              size: Size(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height),
+              painter: MyPainter(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height),
+              child: _loginWidget(context))),
     );
   }
 }
