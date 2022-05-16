@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './pages/Login.dart';
 
 void main() {
   runApp(const LipoicAPP());
@@ -14,7 +15,7 @@ class LipoicAPP extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }
