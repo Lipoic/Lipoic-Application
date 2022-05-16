@@ -10,6 +10,10 @@ class InitPage extends StatefulWidget {
 class _InitPageState extends State<InitPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(163, 223, 218, 1),
+      ),
+    );
   }
 }
