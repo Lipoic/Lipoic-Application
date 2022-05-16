@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lipoic/src/lipoic_app.dart';
+export 'app_text_theme.dart';
+export 'app_color_theme.dart';
 
 class AppTheme {
   static ThemeData defaultTheme = ThemeData(
@@ -18,7 +20,8 @@ class AppTheme {
       fontFamily: 'Roboto',
       textTheme: const TextTheme(
         subtitle1: TextStyle(fontFamilyFallback: ['Roboto', 'NotoSansTC']),
-      ));
+      ),
+      useMaterial3: true);
 
   static const AppTextTheme text = AppTextTheme();
   static const AppColorTheme color = AppColorTheme();

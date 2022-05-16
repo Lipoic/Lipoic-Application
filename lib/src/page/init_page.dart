@@ -1,7 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:lipoic/src/theme/app_theme.dart';
+import 'package:lipoic/src/lipoic_app.dart';
 
 class InitPage extends StatefulWidget {
   const InitPage({Key? key}) : super(key: key);
@@ -12,7 +10,9 @@ class InitPage extends StatefulWidget {
 
 class _InitPageState extends State<InitPage> {
   ButtonStyle buttonTextStyle = ButtonStyle(
-      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 25)));
+      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 25)),
+      padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 6, horizontal: 40)));
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,11 @@ class _InitPageState extends State<InitPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () {},
-                        style: buttonTextStyle,
-                        child: const Text("登入"),
+                        style: buttonTextStyle.copyWith(
+                            backgroundColor: MaterialStateProperty.all(
+                                AppTheme.color.purple)),
+                        child: const Text("登入",
+                            style: TextStyle(color: Colors.white)),
                       ),
                       OutlinedButton(
                           onPressed: () {},
@@ -48,6 +51,7 @@ class _InitPageState extends State<InitPage> {
                 ],
               ),
             ),
+            const SizedBox(height: kSplitHight)
           ],
         ),
       ),
