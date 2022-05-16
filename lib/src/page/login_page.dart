@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lipoic/src/lipoic_app.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -63,6 +64,8 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     child: TextField(
                       style: const TextStyle(color: Color(0xFFABABAB)),
                       decoration: InputDecoration(
+                          hintText: "使用者名稱或電子郵件",
+                          hintStyle: AppTheme.text.fieldHint,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
                           fillColor: const Color(0x557C7B7B),
@@ -75,6 +78,8 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     child: TextField(
                       style: const TextStyle(color: Color(0xFFABABAB)),
                       decoration: InputDecoration(
+                          hintText: "密碼",
+                          hintStyle: AppTheme.text.fieldHint,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
                           fillColor: const Color(0x557C7B7B),
