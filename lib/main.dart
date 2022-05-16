@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './pages/Login.dart';
 
 import 'src/lipoic_app.dart';
 
@@ -14,12 +13,11 @@ class LipoicAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lipoic',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(),
-    );
+        title: 'Lipoic',
+        theme: AppTheme.defaultTheme,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) => NavigatorUtil.generateRoute(settings),
+        onUnknownRoute: (settings) => NavigatorUtil.generateRoute(settings));
   }
 }
 
