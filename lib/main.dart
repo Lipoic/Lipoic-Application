@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import './pages/Login.dart';
 
+import 'src/lipoic_app.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const LipoicAPP());
 }
 
