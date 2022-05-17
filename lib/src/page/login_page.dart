@@ -53,6 +53,8 @@ class _LoginWidgetState extends State<_LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -65,11 +67,22 @@ class _LoginWidgetState extends State<_LoginWidget> {
                 scale: 2, child: const BackButton(color: Color(0XFF457676)))
           ],
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.2,
+        SizedBox(height: size.height * 0.05),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+                width: 60,
+                height: 60,
+                child: Image.asset('assets/images/logo.png')),
+            Text('Lipoic',
+                style:
+                    AppTheme.text.large.copyWith(fontWeight: FontWeight.bold))
+          ],
         ),
+        SizedBox(height: size.height * 0.05),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
+          width: size.width * 0.8,
           child: Column(
             children: [
               TextField(
@@ -80,7 +93,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              SizedBox(height: MediaQuery.of(context).size.width * 0.08),
+              SizedBox(height: size.width * 0.08),
               TextField(
                 style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
@@ -117,7 +130,19 @@ class _LoginWidgetState extends State<_LoginWidget> {
                 onPressed: () {},
                 child: Text('登入', style: AppTheme.text.medium),
               ),
-              const Divider(height: kSplitHight * 3, thickness: 3),
+              const SizedBox(height: kSplitHight),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Expanded(
+                      child: Divider(height: kSplitHight * 3, thickness: 3)),
+                  const SizedBox(width: kSplitWidth * 2),
+                  Text('或', style: AppTheme.text.medium),
+                  const SizedBox(width: kSplitWidth * 2),
+                  const Expanded(
+                      child: Divider(height: kSplitHight * 3, thickness: 3)),
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

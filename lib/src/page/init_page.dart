@@ -12,7 +12,7 @@ class _InitPageState extends State<InitPage> {
   ButtonStyle buttonTextStyle = ButtonStyle(
       textStyle: MaterialStateProperty.all(AppTheme.text.medium),
       padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 55)));
+          const EdgeInsets.symmetric(horizontal: 50)));
 
   @override
   Widget build(BuildContext context) {
@@ -56,5 +56,24 @@ class _InitPageState extends State<InitPage> {
         ),
       ),
     );
+  }
+}
+
+class _BackgroundPainter extends CustomPainter {
+  const _BackgroundPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    drawRect(canvas, size);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+
+  void drawRect(Canvas canvas, Size size) {
+    double width = size.width;
+    double height = size.height;
   }
 }
