@@ -10,9 +10,9 @@ class InitPage extends StatefulWidget {
 
 class _InitPageState extends State<InitPage> {
   ButtonStyle buttonTextStyle = ButtonStyle(
-      textStyle: MaterialStateProperty.all(AppTheme.text.mediumTitle),
+      textStyle: MaterialStateProperty.all(AppTheme.text.medium),
       padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(vertical: 6, horizontal: 55)));
+          const EdgeInsets.symmetric(horizontal: 55)));
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class _InitPageState extends State<InitPage> {
           children: [
             Expanded(
                 child: Center(
-                    child: Text("歡迎來到\n Lipoic！",
-                        style: AppTheme.text.largeTitle.copyWith(
+                    child: Text('歡迎來到\n Lipoic！',
+                        style: AppTheme.text.large.copyWith(
                             color: const Color.fromRGBO(57, 92, 89, 1))))),
             Expanded(
               child: Column(
@@ -39,13 +39,13 @@ class _InitPageState extends State<InitPage> {
                           Navigator.pushNamed(context, LoginPage.routeName);
                         },
                         style: buttonTextStyle,
-                        child: const Text("登入",
+                        child: const Text('登入',
                             style: TextStyle(color: Colors.white)),
                       ),
                       OutlinedButton(
                           onPressed: () {},
                           style: buttonTextStyle,
-                          child: const Text("註冊")),
+                          child: const Text('註冊')),
                     ],
                   ),
                 ],

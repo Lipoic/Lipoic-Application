@@ -12,7 +12,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Lipoic"),
+          title: const Text('Lipoic'),
         ),
         body: const Center(
             child: Text('hello world', style: TextStyle(fontSize: 30))));

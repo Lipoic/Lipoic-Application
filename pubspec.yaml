@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.1.6
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:
@@ -54,17 +55,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-fonts:
-  - family: Roboto
-    fonts:
-      - asset: assets/fonts/Roboto/Roboto-Regular.ttf
-      - asset: assets/fonts/Roboto/Roboto-Bold.ttf
-        style: bold
-  - family: NotoSansTC
-    fonts:
-      - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.otf
-      - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.otf
-        style: bold
+  assets:
+    - assets/images/
+    - assets/images/oauth/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+          weight: 700
+    - family: NotoSansTC
+      fonts:
+        - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.otf
+        - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.otf
+          weight: 700
 
 flutter_native_splash:
   color: "#a3dfda"

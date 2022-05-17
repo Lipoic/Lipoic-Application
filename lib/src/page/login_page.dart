@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 
 class LoginPage extends StatefulWidget {
@@ -44,6 +45,11 @@ class _LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<_LoginWidget> {
   bool keepLogin = true;
+  ButtonStyle buttonTextStyle = ButtonStyle(
+      textStyle: MaterialStateProperty.all(AppTheme.text.medium),
+      padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 100)));
+  double oauthIconSize = 48;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +66,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height * 0.2,
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
@@ -68,33 +74,23 @@ class _LoginWidgetState extends State<_LoginWidget> {
             color: AppTheme.color.cyanBackground,
             child: Column(
               children: [
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 57,
-                    child: TextField(
-                      style: const TextStyle(color: Color(0xFFABABAB)),
-                      decoration: InputDecoration(
-                          hintText: "使用者名稱或電子郵件",
-                          hintStyle: AppTheme.text.fieldHint,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          fillColor: const Color(0x557C7B7B),
-                          filled: true),
-                    )),
+                TextField(
+                  style: const TextStyle(color: Color(0xFFABABAB)),
+                  decoration: InputDecoration(
+                      hintText: '使用者名稱或電子郵件',
+                      hintStyle: AppTheme.text.fieldHint,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.08),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 57,
-                    child: TextField(
-                      style: const TextStyle(color: Color(0xFFABABAB)),
-                      decoration: InputDecoration(
-                          hintText: "密碼",
-                          hintStyle: AppTheme.text.fieldHint,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          fillColor: const Color(0x557C7B7B),
-                          filled: true),
-                    )),
+                TextField(
+                  style: const TextStyle(color: Color(0xFFABABAB)),
+                  decoration: InputDecoration(
+                      hintText: '密碼',
+                      hintStyle: AppTheme.text.fieldHint,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,26 +103,50 @@ class _LoginWidgetState extends State<_LoginWidget> {
                               keepLogin = value!;
                               setState(() {});
                             }),
-                        const Text("保持登入",
+                        const Text('保持登入',
                             style:
                                 TextStyle(fontSize: 15, color: Colors.white)),
                       ],
                     ),
                     const Text(
-                      "忘記密碼 ?",
+                      '忘記密碼 ?',
                       style: TextStyle(fontSize: 15, color: Colors.white),
                     )
                   ],
                 ),
-                const SizedBox(height: 50),
-                SizedBox(
-                  width: 282,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("登入", style: AppTheme.text.mediumTitle),
-                  ),
+                const SizedBox(height: kSplitHight),
+                ElevatedButton(
+                  style: buttonTextStyle,
+                  onPressed: () {},
+                  child: Text('登入', style: AppTheme.text.medium),
                 ),
-                const SizedBox(height: 50),
+                const Divider(height: kSplitHight * 3, thickness: 3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        icon: const FaIcon(FontAwesomeIcons.google),
+                        iconSize: oauthIconSize,
+                        onPressed: () {}),
+                    IconButton(
+                        icon: const FaIcon(FontAwesomeIcons.facebook),
+                        iconSize: oauthIconSize,
+                        onPressed: () {}),
+                    IconButton(
+                        icon: Image.asset(
+                            'assets/images/oauth/taiwan_cloud_education.png'),
+                        iconSize: oauthIconSize,
+                        onPressed: () {})
+                  ],
+                ),
+                const SizedBox(height: kSplitHight),
+                Text('還沒有帳號嗎？', style: AppTheme.text.regular),
+                const SizedBox(height: kSplitHight),
+                ElevatedButton(
+                  style: buttonTextStyle,
+                  onPressed: () {},
+                  child: Text('註冊', style: AppTheme.text.medium),
+                ),
               ],
             ),
           ),
