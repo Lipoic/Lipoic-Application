@@ -70,85 +70,81 @@ class _LoginWidgetState extends State<_LoginWidget> {
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
-          child: Container(
-            color: AppTheme.color.cyanBackground,
-            child: Column(
-              children: [
-                TextField(
-                  style: const TextStyle(color: Color(0xFFABABAB)),
-                  decoration: InputDecoration(
-                      hintText: '使用者名稱或電子郵件',
-                      hintStyle: AppTheme.text.fieldHint,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.width * 0.08),
-                TextField(
-                  style: const TextStyle(color: Color(0xFFABABAB)),
-                  decoration: InputDecoration(
-                      hintText: '密碼',
-                      hintStyle: AppTheme.text.fieldHint,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                            value: keepLogin,
-                            onChanged: (value) {
-                              keepLogin = value!;
-                              setState(() {});
-                            }),
-                        const Text('保持登入',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.white)),
-                      ],
-                    ),
-                    const Text(
-                      '忘記密碼 ?',
-                      style: TextStyle(fontSize: 15, color: Colors.white),
-                    )
-                  ],
-                ),
-                const SizedBox(height: kSplitHight),
-                ElevatedButton(
-                  style: buttonTextStyle,
-                  onPressed: () {},
-                  child: Text('登入', style: AppTheme.text.medium),
-                ),
-                const Divider(height: kSplitHight * 3, thickness: 3),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.google),
-                        iconSize: oauthIconSize,
-                        onPressed: () {}),
-                    IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.facebook),
-                        iconSize: oauthIconSize,
-                        onPressed: () {}),
-                    IconButton(
-                        icon: Image.asset(
-                            'assets/images/oauth/taiwan_cloud_education.png'),
-                        iconSize: oauthIconSize,
-                        onPressed: () {})
-                  ],
-                ),
-                const SizedBox(height: kSplitHight),
-                Text('還沒有帳號嗎？', style: AppTheme.text.regular),
-                const SizedBox(height: kSplitHight),
-                ElevatedButton(
-                  style: buttonTextStyle,
-                  onPressed: () {},
-                  child: Text('註冊', style: AppTheme.text.medium),
-                ),
-              ],
-            ),
+          child: Column(
+            children: [
+              TextField(
+                style: const TextStyle(color: Color(0xFFABABAB)),
+                decoration: InputDecoration(
+                    hintText: '使用者名稱或電子郵件',
+                    prefixIcon: const Icon(Icons.account_circle),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10))),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.08),
+              TextField(
+                style: const TextStyle(color: Color(0xFFABABAB)),
+                decoration: InputDecoration(
+                    hintText: '密碼',
+                    prefixIcon: const Icon(Icons.key),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10))),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                          value: keepLogin,
+                          onChanged: (value) {
+                            keepLogin = value!;
+                            setState(() {});
+                          }),
+                      const Text('保持登入',
+                          style: TextStyle(fontSize: 15, color: Colors.white)),
+                    ],
+                  ),
+                  const Text(
+                    '忘記密碼 ?',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  )
+                ],
+              ),
+              const SizedBox(height: kSplitHight),
+              ElevatedButton(
+                style: buttonTextStyle,
+                onPressed: () {},
+                child: Text('登入', style: AppTheme.text.medium),
+              ),
+              const Divider(height: kSplitHight * 3, thickness: 3),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      icon: const FaIcon(FontAwesomeIcons.google),
+                      iconSize: oauthIconSize,
+                      onPressed: () {}),
+                  IconButton(
+                      icon: const FaIcon(FontAwesomeIcons.facebook),
+                      iconSize: oauthIconSize,
+                      onPressed: () {}),
+                  IconButton(
+                      icon: Image.asset(
+                          'assets/images/oauth/taiwan_cloud_education.png'),
+                      iconSize: oauthIconSize,
+                      onPressed: () {})
+                ],
+              ),
+              const SizedBox(height: kSplitHight),
+              Text('還沒有帳號嗎？', style: AppTheme.text.regular),
+              const SizedBox(height: kSplitHight),
+              ElevatedButton(
+                style: buttonTextStyle,
+                onPressed: () {},
+                child: Text('註冊', style: AppTheme.text.medium),
+              ),
+            ],
           ),
         )
       ],
