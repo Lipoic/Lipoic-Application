@@ -19,16 +19,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Material(
-          color: const Color(0xFF4D4D4D),
-          child: CustomPaint(
-              size: Size(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height),
-              painter: MyPainter(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height),
-              child: const _LoginWidget())),
-    );
+    return Container(
+        color: AppTheme.color.cyanBackground,
+        child: const CustomPaint(
+            painter: _BackgroundPainter(), child: _LoginWidget()));
   }
 }
 
@@ -55,7 +49,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Material(
-            color: const Color(0xFF4D4D4D),
+            color: AppTheme.color.cyanBackground,
             child: Column(
               children: [
                 SizedBox(
@@ -128,17 +122,12 @@ class _LoginWidgetState extends State<_LoginWidget> {
   }
 }
 
-class MyPainter extends CustomPainter {
-  double width = 0.0, height = 0.0;
-
-  MyPainter(double w, double h) {
-    width = w;
-    height = h;
-  }
+class _BackgroundPainter extends CustomPainter {
+  const _BackgroundPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
-    drawRect(canvas);
+    drawRect(canvas, size);
   }
 
   @override
@@ -146,7 +135,10 @@ class MyPainter extends CustomPainter {
     return false;
   }
 
-  void drawRect(Canvas canvas) {
+  void drawRect(Canvas canvas, Size size) {
+    double width = size.width;
+    double height = size.height;
+
     final paint = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill
