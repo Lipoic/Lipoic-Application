@@ -5,6 +5,7 @@ export 'app_color_theme.dart';
 
 class AppTheme {
   static ThemeData defaultTheme = ThemeData(
+      brightness: Brightness.dark,
       primarySwatch: MaterialColor(color.purple.value, <int, Color>{
         50: color.cyan,
         100: const Color.fromRGBO(114, 188, 247, 1),

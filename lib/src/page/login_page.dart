@@ -19,10 +19,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: AppTheme.color.cyanBackground,
-        child: const CustomPaint(
-            painter: _BackgroundPainter(), child: _LoginWidget()));
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0.0),
+        child: Container(color: Theme.of(context).backgroundColor),
+      ),
+      body: Container(
+          constraints: const BoxConstraints.expand(),
+          color: AppTheme.color.cyanBackground,
+          child: const CustomPaint(
+              painter: _BackgroundPainter(), child: _LoginWidget())),
+    );
   }
 }
 
@@ -43,12 +50,21 @@ class _LoginWidgetState extends State<_LoginWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        const SizedBox(height: kSplitHight),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(width: kSplitWidth),
+            Transform.scale(
+                scale: 2, child: const BackButton(color: Color(0XFF457676)))
+          ],
+        ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.3,
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
-          child: Material(
+          child: Container(
             color: AppTheme.color.cyanBackground,
             child: Column(
               children: [
@@ -91,16 +107,14 @@ class _LoginWidgetState extends State<_LoginWidget> {
                               keepLogin = value!;
                               setState(() {});
                             }),
-                        const Text(
-                          "保持登入",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
-                        ),
+                        const Text("保持登入",
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white)),
                       ],
                     ),
                     const Text(
                       "忘記密碼 ?",
-                      style: TextStyle(fontSize: 15, color: Color(0xFFFFFFFF)),
+                      style: TextStyle(fontSize: 15, color: Colors.white),
                     )
                   ],
                 ),
@@ -152,7 +166,7 @@ class _BackgroundPainter extends CustomPainter {
     final double sideLength =
         width / 2 * sqrt(2) * max(0.8, 1.1 - width / height);
     canvas.save();
-    var path = Path()
+    Path path = Path()
       ..moveTo(-10, -10)
       ..lineTo(sideLength * sqrt(2) / 2 + 15, -10)
       ..lineTo(-10, sideLength * sqrt(2) / 2 + 15);
@@ -161,7 +175,7 @@ class _BackgroundPainter extends CustomPainter {
     canvas.restore();
 
     canvas.save();
-    var rect = Offset.zero & Size(sideLength, sideLength);
+    Rect rect = Offset.zero & Size(sideLength, sideLength);
     canvas.translate(-sideLength / 2, -sideLength / 2);
     rotate(canvas, rect.width, rect.height, 45 * 3.14 / 180);
     canvas.drawRect(rect, paint);
@@ -169,7 +183,7 @@ class _BackgroundPainter extends CustomPainter {
     canvas.restore();
 
     canvas.save();
-    var path2 = Path()
+    Path path2 = Path()
       ..moveTo(width + 10, height + 10)
       ..lineTo(width - 100, height + 10)
       ..lineTo(width + 10, height - 80);
