@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
+import 'package:lipoic/src/theme/theme.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -93,7 +94,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              SizedBox(height: size.width * 0.08),
+              const SizedBox(height: kSplitHight * 2.5),
               TextField(
                 style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
@@ -102,7 +103,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: kSplitHight),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -114,14 +115,10 @@ class _LoginWidgetState extends State<_LoginWidget> {
                             keepLogin = value!;
                             setState(() {});
                           }),
-                      const Text('保持登入',
-                          style: TextStyle(fontSize: 15, color: Colors.white)),
+                      Text('保持登入', style: AppTheme.text.small),
                     ],
                   ),
-                  const Text(
-                    '忘記密碼 ?',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
-                  )
+                  Text('忘記密碼 ?', style: AppTheme.text.small)
                 ],
               ),
               const SizedBox(height: kSplitHight),
