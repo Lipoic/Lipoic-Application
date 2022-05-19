@@ -26,25 +26,75 @@ class _InitPageState extends State<InitPage> {
         child: Container(color: Theme.of(context).backgroundColor),
       ),
       body: Container(
-        color: const Color.fromRGBO(163, 223, 218, 1),
+        color: const Color(0xFF5F8385),
         child: CustomPaint(
           painter: const _BackgroundPainter(),
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.23,
               ),
-              Text(
-                '歡迎來到\n Lipoic！',
-                style: AppTheme.text.large.copyWith(color: textColor),
-                textAlign: TextAlign.left,
+              Align(
+
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    Text(
+                      '歡迎來到\nLipoic！',
+                      style: AppTheme.text.large.copyWith(
+                        fontSize: 44,
+                          color:   textColor,
+                          shadows: <Shadow>[
+
+                            Shadow(
+                              offset: Offset(0,5.0),
+                              blurRadius: 6.0,
+                              color: Color(0x55777777)
+                            )
+
+                          ]
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
               ),
-              ColoredBox(
-                  color: textColor,
-                  child: const SizedBox(
-                    width: 120,
-                    height: 11,
-                  )),
+              Align(
+
+                alignment: Alignment.centerLeft,
+                child:
+                Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    ColoredBox(
+                        color: textColor,
+                        child: Container(
+                          decoration: BoxDecoration(
+
+                            boxShadow: [
+
+                              BoxShadow(
+
+                                color: Color(0x66777777),
+                                spreadRadius: 0,
+                                blurRadius: 6,
+                                offset: Offset(0,6.0)
+
+                              )
+
+                            ]
+
+                          ),
+                          child: const SizedBox(
+                            width: 90,
+                            height: 11,
+                          ),
+                        )
+                    ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -101,12 +151,50 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    // final double sideLength =
-    //     width / 2 * sqrt(2) * max(0.8, 1.1 - width / height);
+    final paint2 = Paint()
+      ..isAntiAlias = true
+      ..style = PaintingStyle.fill
+      ..color = const Color(0xFFA3DfDA);
 
-    // Rect rect = const Offset(200, -250) & Size(sideLength, sideLength);
-    // canvas.translate(-sideLength / 2, -sideLength / 2);
-    // PainterUtil.rotate(canvas, rect.width, rect.height, 45 * 3.14 / 180);
-    // canvas.drawRect(rect, paint);
+
+    final path = Path()
+      ..moveTo(width*78/120, height*0.24)   //(width*5/12 * 6/10 + width * 4/10), (0 * 6/10 + height*0.6 * 4/10)
+      ..lineTo(width, height*0.24 - width*42/120)
+      ..lineTo(width, height*0.6);
+    path.close();
+
+    final path2 = Path()
+      ..moveTo(0, 0)
+      ..lineTo(width/2, 0)
+      ..lineTo(width, height*0.6)
+      ..lineTo(width, height)
+      ..lineTo(0, height);
+    path.close();
+
+
+    final pathShadow = Path()
+      ..moveTo(width*0.7, height*0.24-15)   //(width/2 * 6/10 + width * 4/10), (0 * 6/10 + height*0.6 * 4/10)
+      ..lineTo(width, height*0.24 - width*42/120-15)
+      ..lineTo(width, height*0.6-15);
+    path.close();
+
+    final path2Shadow = Path()
+      ..moveTo(10, 0)
+      ..lineTo(width/2+10, 0)
+      ..lineTo(width+10, height*0.6)
+      ..lineTo(width+10, height)
+      ..lineTo(10, height);
+    path.close();
+
+
+
+    canvas.drawShadow(pathShadow, Color(0xFF000000),10,false);
+    canvas.drawPath(path, paint);
+    canvas.drawShadow(path2Shadow, Color(0xFF000000),10,false);
+    canvas.drawPath(path2, paint2);
+
+    //canvas.translate(-sideLength / 2, -sideLength / 2);
+    //PainterUtil.rotate(canvas, rect.width, rect.height, -24 * 3.14 / 180);
+    //canvas.drawRect(rect, paint);
   }
 }
