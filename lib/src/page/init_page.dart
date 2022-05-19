@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:lipoic/src/lipoic_app.dart';
-import 'package:lipoic/src/util/painter_util.dart';
 
 class InitPage extends StatefulWidget {
   const InitPage({Key? key}) : super(key: key);
@@ -35,63 +32,48 @@ class _InitPageState extends State<InitPage> {
                 height: MediaQuery.of(context).size.height * 0.23,
               ),
               Align(
-
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: [
-                    SizedBox(width: 30,),
+                    const SizedBox(width: 30),
                     Text(
                       '歡迎來到\nLipoic！',
                       style: AppTheme.text.large.copyWith(
-                        fontSize: 44,
-                          color:   textColor,
-                          shadows: <Shadow>[
-
-                            Shadow(
-                              offset: Offset(0,5.0),
-                              blurRadius: 6.0,
-                              color: Color(0x55777777)
-                            )
-
-                          ]
-                      ),
+                          fontSize: 44,
+                          color: textColor,
+                          shadows: [
+                            const Shadow(
+                                offset: Offset(0, 5.0),
+                                blurRadius: 6.0,
+                                color: Color(0x55777777))
+                          ]),
                       textAlign: TextAlign.left,
                     ),
                   ],
                 ),
               ),
               Align(
-
                 alignment: Alignment.centerLeft,
-                child:
-                Row(
+                child: Row(
                   children: [
-                    SizedBox(width: 30,),
+                    const SizedBox(
+                      width: 30,
+                    ),
                     ColoredBox(
                         color: textColor,
                         child: Container(
-                          decoration: BoxDecoration(
-
-                            boxShadow: [
-
-                              BoxShadow(
-
+                          decoration: const BoxDecoration(boxShadow: [
+                            BoxShadow(
                                 color: Color(0x66777777),
                                 spreadRadius: 0,
                                 blurRadius: 6,
-                                offset: Offset(0,6.0)
-
-                              )
-
-                            ]
-
-                          ),
+                                offset: Offset(0, 6.0))
+                          ]),
                           child: const SizedBox(
                             width: 90,
                             height: 11,
                           ),
-                        )
-                    ),
+                        )),
                   ],
                 ),
               ),
@@ -156,45 +138,37 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFFA3DfDA);
 
-
     final path = Path()
-      ..moveTo(width*78/120, height*0.24)   //(width*5/12 * 6/10 + width * 4/10), (0 * 6/10 + height*0.6 * 4/10)
-      ..lineTo(width, height*0.24 - width*42/120)
-      ..lineTo(width, height*0.6);
+      ..moveTo(width * 78 / 120, height * 0.24)
+      ..lineTo(width, height * 0.24 - width * 42 / 120)
+      ..lineTo(width, height * 0.6);
     path.close();
 
     final path2 = Path()
       ..moveTo(0, 0)
-      ..lineTo(width/2, 0)
-      ..lineTo(width, height*0.6)
+      ..lineTo(width / 2, 0)
+      ..lineTo(width, height * 0.6)
       ..lineTo(width, height)
       ..lineTo(0, height);
     path.close();
 
-
     final pathShadow = Path()
-      ..moveTo(width*0.7, height*0.24-15)   //(width/2 * 6/10 + width * 4/10), (0 * 6/10 + height*0.6 * 4/10)
-      ..lineTo(width, height*0.24 - width*42/120-15)
-      ..lineTo(width, height*0.6-15);
+      ..moveTo(width * 0.7, height * 0.24 - 15)
+      ..lineTo(width, height * 0.24 - width * 42 / 120 - 15)
+      ..lineTo(width, height * 0.6 - 15);
     path.close();
 
     final path2Shadow = Path()
       ..moveTo(10, 0)
-      ..lineTo(width/2+10, 0)
-      ..lineTo(width+10, height*0.6)
-      ..lineTo(width+10, height)
+      ..lineTo(width / 2 + 10, 0)
+      ..lineTo(width + 10, height * 0.6)
+      ..lineTo(width + 10, height)
       ..lineTo(10, height);
     path.close();
 
-
-
-    canvas.drawShadow(pathShadow, Color(0xFF000000),10,false);
+    canvas.drawShadow(pathShadow, Colors.black, 10, false);
     canvas.drawPath(path, paint);
-    canvas.drawShadow(path2Shadow, Color(0xFF000000),10,false);
+    canvas.drawShadow(path2Shadow, Colors.black, 10, false);
     canvas.drawPath(path2, paint2);
-
-    //canvas.translate(-sideLength / 2, -sideLength / 2);
-    //PainterUtil.rotate(canvas, rect.width, rect.height, -24 * 3.14 / 180);
-    //canvas.drawRect(rect, paint);
   }
 }
