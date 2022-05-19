@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 import 'package:lipoic/src/theme/theme.dart';
+import 'package:lipoic/src/util/painter_util.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -215,7 +216,7 @@ class _BackgroundPainter extends CustomPainter {
     canvas.save();
     Rect rect = Offset.zero & Size(sideLength, sideLength);
     canvas.translate(-sideLength / 2, -sideLength / 2);
-    rotate(canvas, rect.width, rect.height, 45 * 3.14 / 180);
+    PainterUtil.rotate(canvas, rect.width, rect.height, 45 * 3.14 / 180);
     canvas.drawRect(rect, paint);
 
     canvas.restore();
@@ -232,21 +233,9 @@ class _BackgroundPainter extends CustomPainter {
     canvas.save();
     var rect3 = Offset.zero & const Size(100, 100);
     canvas.translate(width - 52, height - 40);
-    rotate(canvas, rect3.width, rect3.height, 50 * 3.14 / 180);
+    PainterUtil.rotate(canvas, rect3.width, rect3.height, 50 * 3.14 / 180);
     canvas.drawRect(rect3, paint3);
 
     canvas.restore();
-  }
-
-  void rotate(Canvas canvas, double dx, double dy, double angle) {
-    final r = sqrt(dx * dx + dy * dy) / 2;
-    final alpha = atan(dx / dy);
-    final beta = alpha + angle;
-    final shiftY = r * sin(beta);
-    final shiftX = r * cos(beta);
-    final translateX = dx / 2 - shiftX;
-    final translateY = dy / 2 - shiftY;
-    canvas.translate(translateX, translateY);
-    canvas.rotate(angle);
   }
 }
