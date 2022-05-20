@@ -116,15 +116,6 @@ class _BackgroundPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    drawRect(canvas, size);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
-
-  void drawRect(Canvas canvas, Size size) {
     double width = size.width;
     double height = size.height;
 
@@ -170,5 +161,10 @@ class _BackgroundPainter extends CustomPainter {
     canvas.drawPath(path, paint);
     canvas.drawShadow(path2Shadow, Colors.black, 10, false);
     canvas.drawPath(path2, paint2);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
