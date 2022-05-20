@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lipoic/src/config/config.dart';
 import 'package:lipoic/src/page/pages.dart';
 
 class NavigatorUtil {
@@ -9,7 +10,7 @@ class NavigatorUtil {
         String? path = settings.name;
 
         if (path == '/') {
-          bool init = false;
+          bool init = appConfig.init;
 
           if (init) {
             return const MainPage();

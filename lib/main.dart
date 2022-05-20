@@ -4,6 +4,7 @@ import 'src/lipoic_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  ConfigHelper.init();
   runApp(const LipoicAPP());
 }
 
