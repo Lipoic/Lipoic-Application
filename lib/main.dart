@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'src/lipoic_app.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ConfigHelper.init();
   runApp(const LipoicAPP());
 }
 
@@ -10,15 +14,11 @@ class LipoicAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lipoic',
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: 'Roboto',
-          textTheme: const TextTheme(
-            subtitle1: TextStyle(fontFamilyFallback: ['Roboto', 'NotoSansTC']),
-          )),
-      home: const HomePage(),
-    );
+        title: 'Lipoic',
+        theme: AppTheme.defaultTheme,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) => NavigatorUtil.generateRoute(settings),
+        onUnknownRoute: (settings) => NavigatorUtil.generateRoute(settings));
   }
 }
 
