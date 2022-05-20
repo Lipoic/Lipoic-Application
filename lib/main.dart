@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'src/lipoic_app.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ConfigHelper.init();
+  await ConfigHelper.init();
   runApp(const LipoicAPP());
 }
 
