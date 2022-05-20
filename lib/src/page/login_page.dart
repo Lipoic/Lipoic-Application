@@ -127,7 +127,10 @@ class _LoginWidgetState extends State<_LoginWidget> {
                       Text('保持登入', style: AppTheme.text.small),
                     ],
                   ),
-                  Text('忘記密碼 ?', style: AppTheme.text.small)
+                  TextButton(
+                    child: Text('忘記密碼 ?', style: AppTheme.text.small),
+                    onPressed: () {},
+                  )
                 ],
               ),
               const SizedBox(height: kSplitHight),

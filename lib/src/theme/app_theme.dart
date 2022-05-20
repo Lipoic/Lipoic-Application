@@ -28,6 +28,8 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
               side: BorderSide(color: AppTheme.color.purple, width: 3))),
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(primary: Colors.white)),
       useMaterial3: true);
 
   static const AppTextTheme text = AppTextTheme();
