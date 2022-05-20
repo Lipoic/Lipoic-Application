@@ -39,7 +39,6 @@ class _InitPageState extends State<InitPage> {
                     Text(
                       '歡迎來到\nLipoic！',
                       style: AppTheme.text.large.copyWith(
-                          fontSize: 44,
                           color: textColor,
                           shadows: [
                             const Shadow(
