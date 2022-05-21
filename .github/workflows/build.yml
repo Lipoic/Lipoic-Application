@@ -8,7 +8,7 @@ on:
 jobs:
   build_android_appbundle:
     name: Build Android app bundle
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@main
@@ -25,7 +25,7 @@ jobs:
 
   build_android_apk:
     name: Build Android APK
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@main
@@ -42,7 +42,7 @@ jobs:
 
   build_ios_ipa:
     name: Build iPhone application archive
-    run-on: macos-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@main

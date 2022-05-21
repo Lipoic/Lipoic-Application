@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Lipoic"]
+  "cSpell.words": ["Lipoic"],
+  "yaml.schemas": {
+    "https://json.schemastore.org/hammerkit.json": "file:///run/media/siongsng/Data/coding/Github/Lipoic-Application/.github/workflows/build.yml"
+  }
 }
