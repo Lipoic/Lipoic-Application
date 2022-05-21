@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 import 'package:lipoic/src/theme/theme.dart';
-import 'package:lipoic/src/util/painter_util.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -96,7 +95,6 @@ class _LoginWidgetState extends State<_LoginWidget> {
           child: Column(
             children: [
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '使用者名稱或電子郵件',
                     prefixIcon: const Icon(Icons.account_circle),
@@ -105,7 +103,6 @@ class _LoginWidgetState extends State<_LoginWidget> {
               ),
               const SizedBox(height: kSplitHight * 2.5),
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '密碼',
                     prefixIcon: const Icon(Icons.key),
