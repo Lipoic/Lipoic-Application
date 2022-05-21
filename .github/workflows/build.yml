@@ -1,0 +1,95 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build_android_appbundle:
+    name: Build Android app bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: flutter build appbundle
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-Android-AppBundle
+          path: build/app/outputs/bundle/release/app-release.aab
+
+  build_android_apk:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: flutter build apk
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-Android-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build_ios_ipa:
+    name: Build iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: | 
+          flutter build ios --no-codesign
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-iOS-APP
+          path: build/ios/iphoneos/Runner.app
+
+  build_desktop:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - runs-on: ubuntu-latest
+            output-path: build/linux/x64/release/bundle
+            os-name: linux
+          - runs-on: windows-latest
+            output-path: build/windows/runner/Release
+            os-name: windows
+          - runs-on: macos-latest
+            output-path: build/macos/Build/Products/Release/lipoic.app
+            os-name: macos
+      fail-fast: false
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Install dependencies
+        if: ${{ runner.os == 'Linux' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install ninja-build libgtk-3-dev libblkid-dev
+      - name: Build for ${{ runner.os }}
+        run: |
+          flutter build ${{ matrix.os-name }}
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-${{ runner.os }}
+          path: ${{ matrix.output-path}}
