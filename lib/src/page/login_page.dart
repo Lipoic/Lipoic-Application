@@ -204,7 +204,7 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength = min(width / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
+    final double sideLength = min(min(height,width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
 
     Path topLeftTri = Path()
       ..moveTo(0, 0)
@@ -223,13 +223,13 @@ class _BackgroundPainter extends CustomPainter {
 
     Path bottomRightTri = Path()
       ..moveTo(width, height)
-      ..lineTo(width - 5 * sideLength/15, height)
-      ..lineTo(width, height - 4* sideLength/15);
+      ..lineTo(width - 5 * min(sideLength/8, width/20), height)
+      ..lineTo(width, height - 4* min(sideLength/8, width/20));
 
     Path path2Shadow = Path()
       ..moveTo(width + 10, height + 10)
-      ..lineTo(width - 100, height + 10)
-      ..lineTo(width + 10, height - 80);
+      ..lineTo(width - 5 * min(sideLength/8, width/20), height + 10)
+      ..lineTo(width + 10, height - min(sideLength/8, width/20));
 
     canvas.drawShadow(path2Shadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(bottomRightTri, paint2);
