@@ -51,7 +51,7 @@ jobs:
           cache: true
       - name: Build
         run: | 
-          flutter build ios --no-codesign
+          flutter build ipa --no-codesign
       - name: Upload File
         uses: actions/upload-artifact@v2
         with:
