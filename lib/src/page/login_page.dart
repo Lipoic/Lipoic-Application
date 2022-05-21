@@ -92,7 +92,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
         ),
         SizedBox(height: size.height * 0.05),
         SizedBox(
-          width: size.width * 0.85,
+          width: min(size.width * 0.85, 300),
           child: Column(
             children: [
               TextField(
@@ -204,7 +204,7 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength = min(width / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 400);
+    final double sideLength = min(width / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
 
     Path topLeftTri = Path()
       ..moveTo(0, 0)
