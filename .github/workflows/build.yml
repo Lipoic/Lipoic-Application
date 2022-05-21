@@ -41,7 +41,7 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
 
   build_ios_ipa:
-    name: Build iPhone application archive
+    name: Build iOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,12 +51,12 @@ jobs:
           cache: true
       - name: Build
         run: | 
-          flutter build ipa --no-codesign
+          flutter build ios --no-codesign
       - name: Upload File
         uses: actions/upload-artifact@v2
         with:
-          name: Lipoic-Android-APK
-          path: build/ios/ipa
+          name: Lipoic-iOS-APP
+          path: build/ios/iphoneos/Runner.app
 
   build_desktop:
     strategy:
