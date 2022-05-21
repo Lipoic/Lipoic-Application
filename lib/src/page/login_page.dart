@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 import 'package:lipoic/src/theme/theme.dart';
-import 'package:lipoic/src/util/painter_util.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -96,7 +95,6 @@ class _LoginWidgetState extends State<_LoginWidget> {
           child: Column(
             children: [
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '使用者名稱或電子郵件',
                     prefixIcon: const Icon(Icons.account_circle),
@@ -105,7 +103,6 @@ class _LoginWidgetState extends State<_LoginWidget> {
               ),
               const SizedBox(height: kSplitHight * 2.5),
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '密碼',
                     prefixIcon: const Icon(Icons.key),
@@ -204,13 +201,13 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength = min(min(height,width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
+    final double sideLength = min(
+        min(height, width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
 
     Path topLeftTri = Path()
       ..moveTo(0, 0)
       ..lineTo(sideLength * sqrt(2) / 2, 0)
       ..lineTo(0, sideLength * sqrt(2) / 2);
-
 
     Path pathShadow = Path()
       ..moveTo(-10, -10)
@@ -220,20 +217,18 @@ class _BackgroundPainter extends CustomPainter {
     canvas.drawShadow(pathShadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(topLeftTri, paint);
 
-
     Path bottomRightTri = Path()
       ..moveTo(width, height)
-      ..lineTo(width - 5 * min(sideLength/8, width/20), height)
-      ..lineTo(width, height - 4* min(sideLength/8, width/20));
+      ..lineTo(width - 5 * min(sideLength / 8, width / 20), height)
+      ..lineTo(width, height - 4 * min(sideLength / 8, width / 20));
 
     Path path2Shadow = Path()
       ..moveTo(width + 10, height + 10)
-      ..lineTo(width - 5 * min(sideLength/8, width/20), height + 10)
-      ..lineTo(width + 10, height - min(sideLength/8, width/20));
+      ..lineTo(width - 5 * min(sideLength / 8, width / 20), height + 10)
+      ..lineTo(width + 10, height - min(sideLength / 8, width / 20));
 
     canvas.drawShadow(path2Shadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(bottomRightTri, paint2);
-
   }
 
   @override
