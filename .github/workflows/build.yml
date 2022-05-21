@@ -50,7 +50,7 @@ jobs:
           flutter-version: 3.0.1
           cache: true
       - name: Build
-        run: flutter build ipa
+        run: flutter build ipa --export-method development
       - name: Upload File
         uses: actions/upload-artifact@v2
         with:
