@@ -1,0 +1,94 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build_android_appbundle:
+    name: Build Android app bundle
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: flutter build appbundle
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-Android-AppBundle
+          path: build/app/outputs/bundle/release/app-release.aab
+
+  build_android_apk:
+    name: Build Android APK
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: flutter build apk
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-Android-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build_ios_ipa:
+    name: Build iPhone application archive
+    run-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Build
+        run: flutter build ipa
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lipoic-Android-APK
+          path: build/ios/ipa
+
+  build_desktop:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - runs-on: ubuntu-latest
+            output-path: build/linux/x64/release/bundle
+            os-name: linux
+          - runs-on: windows-latest
+            output-path: build/windows/runner/Release
+            os-name: windows
+          - runs-on: macos-latest
+            output-path: build/macos/Build/Products/Release/rpmlauncher.app
+            os-name: macos
+      fail-fast: false
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@main
+        with:
+          flutter-version: 3.0.1
+          cache: true
+      - name: Install dependencies
+        if: ${{ runner.os == 'Linux' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install ninja-build libgtk-3-dev libblkid-dev
+      - name: Build for ${{ runner.os }}
+        run: |
+          flutter build ${{ matrix.os-name }} --dart-define="build_id=${{ github.run_number }}" --dart-define="version_type=debug" --dart-define="version=${{ secrets.VERSION  }}"
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: RPMLauncher-${{ runner.os }}-debug
+          path: ${{ matrix.output-path}}
