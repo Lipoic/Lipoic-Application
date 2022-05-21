@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 import 'package:lipoic/src/theme/theme.dart';
-import 'package:lipoic/src/util/painter_util.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -92,11 +91,10 @@ class _LoginWidgetState extends State<_LoginWidget> {
         ),
         SizedBox(height: size.height * 0.05),
         SizedBox(
-          width: size.width * 0.85,
+          width: min(size.width * 0.85, 300),
           child: Column(
             children: [
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '使用者名稱或電子郵件',
                     prefixIcon: const Icon(Icons.account_circle),
@@ -105,7 +103,6 @@ class _LoginWidgetState extends State<_LoginWidget> {
               ),
               const SizedBox(height: kSplitHight * 2.5),
               TextField(
-                style: const TextStyle(color: Color(0xFFABABAB)),
                 decoration: InputDecoration(
                     hintText: '密碼',
                     prefixIcon: const Icon(Icons.key),
@@ -199,46 +196,41 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFFA4DFDA);
 
-    final paint3 = Paint()
+    final paint2 = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength =
-        width / 2 * sqrt(2) * max(0.8, 1.1 - width / height);
-    canvas.save();
-    Path path = Path()
+    final double sideLength = min(min(height,width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
+
+    Path topLeftTri = Path()
+      ..moveTo(0, 0)
+      ..lineTo(sideLength * sqrt(2) / 2, 0)
+      ..lineTo(0, sideLength * sqrt(2) / 2);
+
+
+    Path pathShadow = Path()
       ..moveTo(-10, -10)
       ..lineTo(sideLength * sqrt(2) / 2 + 15, -10)
       ..lineTo(-10, sideLength * sqrt(2) / 2 + 15);
 
-    canvas.drawShadow(path, const Color(0xFF000000), 10, false);
-    canvas.restore();
+    canvas.drawShadow(pathShadow, const Color(0xFF000000), 10, false);
+    canvas.drawPath(topLeftTri, paint);
 
-    canvas.save();
-    Rect rect = Offset.zero & Size(sideLength, sideLength);
-    canvas.translate(-sideLength / 2, -sideLength / 2);
-    PainterUtil.rotate(canvas, rect.width, rect.height, 45 * 3.14 / 180);
-    canvas.drawRect(rect, paint);
 
-    canvas.restore();
+    Path bottomRightTri = Path()
+      ..moveTo(width, height)
+      ..lineTo(width - 5 * min(sideLength/10, width/30), height)
+      ..lineTo(width, height - 4* min(sideLength/10, width/30));
 
-    canvas.save();
-    Path path2 = Path()
+    Path path2Shadow = Path()
       ..moveTo(width + 10, height + 10)
-      ..lineTo(width - 100, height + 10)
-      ..lineTo(width + 10, height - 80);
+      ..lineTo(width - 5 * min(sideLength/10, width/30), height + 10)
+      ..lineTo(width + 10, height - min(sideLength/10, width/30));
 
-    canvas.drawShadow(path2, const Color(0xFF000000), 10, false);
-    canvas.restore();
+    canvas.drawShadow(path2Shadow, const Color(0xFF000000), 10, false);
+    canvas.drawPath(bottomRightTri, paint2);
 
-    canvas.save();
-    Rect rect3 = Offset.zero & const Size(100, 100);
-    canvas.translate(width - 52, height - 40);
-    PainterUtil.rotate(canvas, rect3.width, rect3.height, 50 * 3.14 / 180);
-    canvas.drawRect(rect3, paint3);
-
-    canvas.restore();
   }
 
   @override
