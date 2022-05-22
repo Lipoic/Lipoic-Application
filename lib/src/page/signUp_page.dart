@@ -5,15 +5,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 import 'package:lipoic/src/theme/theme.dart';
 
-class LoginPage extends StatefulWidget {
-  static const String routeName = '/login';
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  static const String routeName = '/signup';
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   void initState() {
     super.initState();
@@ -36,33 +36,33 @@ class _LoginPageState extends State<LoginPage> {
               ),
               color: AppTheme.color.cyanBackground,
               child: const CustomPaint(
-                  painter: _BackgroundPainter(), child: _LoginWidget())),
+                  painter: _SignUpPainter(), child: _SignUpWidget())),
         ),
       ),
     );
   }
 }
 
-class _LoginWidget extends StatefulWidget {
-  const _LoginWidget({
+class _SignUpWidget extends StatefulWidget {
+  const _SignUpWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<_LoginWidget> createState() => _LoginWidgetState();
+  State<_SignUpWidget> createState() => _SignUpWidgetState();
 }
 
-class _LoginWidgetState extends State<_LoginWidget> {
+class _SignUpWidgetState extends State<_SignUpWidget> {
   bool keepLogin = true;
   ButtonStyle buttonTextStyle = ButtonStyle(
       textStyle: MaterialStateProperty.all(AppTheme.text.medium),
       shape: MaterialStateProperty.all(
 
-          RoundedRectangleBorder(
+        RoundedRectangleBorder(
 
-              borderRadius: BorderRadius.circular(10.0)
+          borderRadius: BorderRadius.circular(10.0)
 
-          )
+        )
 
       ),
       padding: MaterialStateProperty.all(
@@ -85,7 +85,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                 scale: 2, child: const BackButton(color: Color(0XFF457676)))
           ],
         ),
-        SizedBox(height: size.height * 0.04),
+        SizedBox(height: size.height * 0.05),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -95,7 +95,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                 child: Image.asset('assets/images/logo.png')),
             Text('Lipoic',
                 style:
-                    AppTheme.text.large.copyWith(fontWeight: FontWeight.bold))
+                AppTheme.text.large.copyWith(fontWeight: FontWeight.bold))
           ],
         ),
         SizedBox(height: size.height * 0.03),
@@ -105,12 +105,20 @@ class _LoginWidgetState extends State<_LoginWidget> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                    hintText: '使用者名稱或電子郵件',
+                    hintText: '電子郵件',
                     prefixIcon: const Icon(Icons.account_circle),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight * 2.5),
+              const SizedBox(height: kSplitHight * 2),
+              TextField(
+                decoration: InputDecoration(
+                    hintText: '使用者名稱',
+                    prefixIcon: const Icon(Icons.account_circle),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10))),
+              ),
+              const SizedBox(height: kSplitHight * 2),
               TextField(
                 decoration: InputDecoration(
                     hintText: '密碼',
@@ -118,75 +126,23 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: keepLogin,
-                          onChanged: (value) {
-                            keepLogin = value!;
-                            setState(() {});
-                          }),
-                      Text('保持登入', style: AppTheme.text.small),
-                    ],
-                  ),
-                  TextButton(
-                    child: Text('忘記密碼 ?', style: AppTheme.text.small),
-                    onPressed: () {},
-                  )
-                ],
-              ),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHight*3),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {},
-                child: Text('登入', style: AppTheme.text.medium),
+                child: Text('註冊', style: AppTheme.text.medium),
               ),
-              const SizedBox(height: kSplitHight),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Expanded(
-                      child: Divider(height: kSplitHight * 3, thickness: 3)),
-                  const SizedBox(width: kSplitWidth * 2),
-                  Text('或', style: AppTheme.text.medium.copyWith(color: Color(0xFF777777))),
-                  const SizedBox(width: kSplitWidth * 2),
-                  const Expanded(
-                      child: Divider(height: kSplitHight * 3, thickness: 3)),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                      icon: const FaIcon(FontAwesomeIcons.google),
-                      iconSize: oauthIconSize,
-                      onPressed: () {}),
-                  IconButton(
-                      icon: const FaIcon(FontAwesomeIcons.facebook),
-                      iconSize: oauthIconSize,
-                      onPressed: () {}),
-                  IconButton(
-                      icon: Image.asset(
-                          'assets/images/oauth/taiwan_cloud_education.png'),
-                      iconSize: oauthIconSize,
-                      onPressed: () {})
-                ],
-              ),
-              const SizedBox(height: kSplitHight),
-              Text('還沒有帳號嗎？', style: AppTheme.text.regular),
+              const SizedBox(height: kSplitHight*7),
+              Text('已經有帳號了嗎？', style: AppTheme.text.regular),
               const SizedBox(height: kSplitHight),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {
 
-                  Navigator.pushNamed(context, SignUpPage.routeName);
+                  Navigator.pushNamed(context, LoginPage.routeName);
 
                 },
-                child: Text('註冊', style: AppTheme.text.medium),
+                child: Text('登入', style: AppTheme.text.medium),
               ),
             ],
           ),
@@ -196,8 +152,8 @@ class _LoginWidgetState extends State<_LoginWidget> {
   }
 }
 
-class _BackgroundPainter extends CustomPainter {
-  const _BackgroundPainter();
+class _SignUpPainter extends CustomPainter {
+  const _SignUpPainter();
 
   @override
   void paint(Canvas canvas, Size size) {

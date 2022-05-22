@@ -19,7 +19,12 @@ class NavigatorUtil {
           }
         } else if (path == '/login') {
           return const LoginPage();
+
+        } else if (path == '/signup') {
+          return const SignUpPage();
+
         }
+
 
         return const MainPage();
       },
