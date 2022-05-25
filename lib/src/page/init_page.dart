@@ -105,7 +105,7 @@ class _InitPageState extends State<InitPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: kSplitHight + 5)
+              const SizedBox(height: kSplitHeight + 5)
             ],
           ),
         ),

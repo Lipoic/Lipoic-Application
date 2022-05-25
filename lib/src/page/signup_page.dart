@@ -74,7 +74,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: kSplitHight),
+        const SizedBox(height: kSplitHeight),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -108,7 +108,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight * 2),
+              const SizedBox(height: kSplitHeight * 2),
               TextField(
                 decoration: InputDecoration(
                     hintText: '使用者名稱',
@@ -116,7 +116,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight * 2),
+              const SizedBox(height: kSplitHeight * 2),
               TextField(
                 decoration: InputDecoration(
                     hintText: '密碼',
@@ -124,15 +124,15 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight*3),
+              const SizedBox(height: kSplitHeight*3),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {},
                 child: Text('註冊', style: AppTheme.text.medium),
               ),
-              const SizedBox(height: kSplitHight*7),
+              const SizedBox(height: kSplitHeight*7),
               Text('已經有帳號了嗎？', style: AppTheme.text.regular),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {

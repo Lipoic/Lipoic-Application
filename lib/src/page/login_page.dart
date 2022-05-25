@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lipoic/src/lipoic_app.dart';
-import 'package:lipoic/src/theme/theme.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -76,7 +75,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: kSplitHight),
+        const SizedBox(height: kSplitHeight),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -110,7 +109,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight * 2.5),
+              const SizedBox(height: kSplitHeight * 2.5),
               TextField(
                 decoration: InputDecoration(
                     hintText: '密碼',
@@ -118,7 +117,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -139,23 +138,23 @@ class _LoginWidgetState extends State<_LoginWidget> {
                   )
                 ],
               ),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {},
                 child: Text('登入', style: AppTheme.text.medium),
               ),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Expanded(
-                      child: Divider(height: kSplitHight * 3, thickness: 3)),
+                      child: Divider(height: kSplitHeight * 3, thickness: 3)),
                   const SizedBox(width: kSplitWidth * 2),
-                  Text('或', style: AppTheme.text.medium.copyWith(color: Color(0xFF777777))),
+                  Text('或', style: AppTheme.text.medium.copyWith(color: const Color(0xFF777777))),
                   const SizedBox(width: kSplitWidth * 2),
                   const Expanded(
-                      child: Divider(height: kSplitHight * 3, thickness: 3)),
+                      child: Divider(height: kSplitHeight * 3, thickness: 3)),
                 ],
               ),
               Row(
@@ -176,9 +175,9 @@ class _LoginWidgetState extends State<_LoginWidget> {
                       onPressed: () {})
                 ],
               ),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               Text('還沒有帳號嗎？', style: AppTheme.text.regular),
-              const SizedBox(height: kSplitHight),
+              const SizedBox(height: kSplitHeight),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {
