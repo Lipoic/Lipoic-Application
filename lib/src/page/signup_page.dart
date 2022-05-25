@@ -55,14 +55,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
   ButtonStyle buttonTextStyle = ButtonStyle(
       textStyle: MaterialStateProperty.all(AppTheme.text.medium),
       shape: MaterialStateProperty.all(
-
-        RoundedRectangleBorder(
-
-          borderRadius: BorderRadius.circular(10.0)
-
-        )
-
-      ),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
       padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 100)));
   double oauthIconSize = 48;
@@ -93,7 +86,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
                 child: Image.asset('assets/images/logo.png')),
             Text('Lipoic',
                 style:
-                AppTheme.text.large.copyWith(fontWeight: FontWeight.bold))
+                    AppTheme.text.large.copyWith(fontWeight: FontWeight.bold))
           ],
         ),
         SizedBox(height: size.height * 0.03),
@@ -124,21 +117,19 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
-              const SizedBox(height: kSplitHeight*3),
+              const SizedBox(height: kSplitHeight * 3),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {},
                 child: Text('註冊', style: AppTheme.text.medium),
               ),
-              const SizedBox(height: kSplitHeight*7),
+              const SizedBox(height: kSplitHeight * 7),
               Text('已經有帳號了嗎？', style: AppTheme.text.regular),
               const SizedBox(height: kSplitHeight),
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {
-
                   Navigator.pushNamed(context, LoginPage.routeName);
-
                 },
                 child: Text('登入', style: AppTheme.text.medium),
               ),
@@ -168,13 +159,13 @@ class _SignUpPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength = min(min(height,width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
+    final double sideLength = min(
+        min(height, width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
 
     Path topLeftTri = Path()
       ..moveTo(0, 0)
       ..lineTo(sideLength * sqrt(2) / 2, 0)
       ..lineTo(0, sideLength * sqrt(2) / 2);
-
 
     Path pathShadow = Path()
       ..moveTo(-10, -10)
@@ -184,20 +175,18 @@ class _SignUpPainter extends CustomPainter {
     canvas.drawShadow(pathShadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(topLeftTri, paint);
 
-
     Path bottomRightTri = Path()
       ..moveTo(width, height)
-      ..lineTo(width - 5 * min(sideLength/10, width/30), height)
-      ..lineTo(width, height - 4* min(sideLength/10, width/30));
+      ..lineTo(width - 5 * min(sideLength / 10, width / 30), height)
+      ..lineTo(width, height - 4 * min(sideLength / 10, width / 30));
 
     Path path2Shadow = Path()
       ..moveTo(width + 10, height + 10)
-      ..lineTo(width - 5 * min(sideLength/10, width/30), height + 10)
-      ..lineTo(width + 10, height - min(sideLength/10, width/30));
+      ..lineTo(width - 5 * min(sideLength / 10, width / 30), height + 10)
+      ..lineTo(width + 10, height - min(sideLength / 10, width / 30));
 
     canvas.drawShadow(path2Shadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(bottomRightTri, paint2);
-
   }
 
   @override

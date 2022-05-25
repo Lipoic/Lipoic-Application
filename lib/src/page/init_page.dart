@@ -94,9 +94,8 @@ class _InitPageState extends State<InitPage> {
                         ),
                         OutlinedButton(
                             onPressed: () {
-
-                              Navigator.pushNamed(context, SignUpPage.routeName);
-
+                              Navigator.pushNamed(
+                                  context, SignUpPage.routeName);
                             },
                             style: buttonTextStyle,
                             child: const Text('註冊')),

@@ -56,14 +56,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
   ButtonStyle buttonTextStyle = ButtonStyle(
       textStyle: MaterialStateProperty.all(AppTheme.text.medium),
       shape: MaterialStateProperty.all(
-
-          RoundedRectangleBorder(
-
-              borderRadius: BorderRadius.circular(10.0)
-
-          )
-
-      ),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
       padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 100)));
   double oauthIconSize = 48;
@@ -151,7 +144,9 @@ class _LoginWidgetState extends State<_LoginWidget> {
                   const Expanded(
                       child: Divider(height: kSplitHeight * 3, thickness: 3)),
                   const SizedBox(width: kSplitWidth * 2),
-                  Text('或', style: AppTheme.text.medium.copyWith(color: const Color(0xFF777777))),
+                  Text('或',
+                      style: AppTheme.text.medium
+                          .copyWith(color: const Color(0xFF777777))),
                   const SizedBox(width: kSplitWidth * 2),
                   const Expanded(
                       child: Divider(height: kSplitHeight * 3, thickness: 3)),
@@ -181,9 +176,7 @@ class _LoginWidgetState extends State<_LoginWidget> {
               ElevatedButton(
                 style: buttonTextStyle,
                 onPressed: () {
-
                   Navigator.pushNamed(context, SignUpPage.routeName);
-
                 },
                 child: Text('註冊', style: AppTheme.text.medium),
               ),
@@ -213,13 +206,13 @@ class _BackgroundPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = const Color(0xFF819FA4);
 
-    final double sideLength = min(min(height,width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
+    final double sideLength = min(
+        min(height, width) / 2 * sqrt(2) * max(0.8, 1.1 - width / height), 600);
 
     Path topLeftTri = Path()
       ..moveTo(0, 0)
       ..lineTo(sideLength * sqrt(2) / 2, 0)
       ..lineTo(0, sideLength * sqrt(2) / 2);
-
 
     Path pathShadow = Path()
       ..moveTo(-10, -10)
@@ -229,20 +222,18 @@ class _BackgroundPainter extends CustomPainter {
     canvas.drawShadow(pathShadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(topLeftTri, paint);
 
-
     Path bottomRightTri = Path()
       ..moveTo(width, height)
-      ..lineTo(width - 5 * min(sideLength/10, width/30), height)
-      ..lineTo(width, height - 4* min(sideLength/10, width/30));
+      ..lineTo(width - 5 * min(sideLength / 10, width / 30), height)
+      ..lineTo(width, height - 4 * min(sideLength / 10, width / 30));
 
     Path path2Shadow = Path()
       ..moveTo(width + 10, height + 10)
-      ..lineTo(width - 5 * min(sideLength/10, width/30), height + 10)
-      ..lineTo(width + 10, height - min(sideLength/10, width/30));
+      ..lineTo(width - 5 * min(sideLength / 10, width / 30), height + 10)
+      ..lineTo(width + 10, height - min(sideLength / 10, width / 30));
 
     canvas.drawShadow(path2Shadow, const Color(0xFF000000), 10, false);
     canvas.drawPath(bottomRightTri, paint2);
-
   }
 
   @override
