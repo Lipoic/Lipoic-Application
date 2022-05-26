@@ -1,4 +1,4 @@
-import 'package:lipoic/src/config/config.dart';
+import 'config.dart';
 
 ConfigStorage appConfig = const ConfigStorage();
 

@@ -3,19 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lipoic/src/lipoic_app.dart';
 
-class SignUpPage extends StatefulWidget {
-  static const String routeName = '/signup';
-  const SignUpPage({Key? key}) : super(key: key);
+class BaseAuthPage extends StatelessWidget {
+  final List<Widget> fields;
 
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-class _SignUpPageState extends State<SignUpPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  const BaseAuthPage({Key? key, required this.fields}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,32 +24,22 @@ class _SignUpPageState extends State<SignUpPage> {
                     MediaQuery.of(context).padding.top,
               ),
               color: AppTheme.color.cyanBackground,
-              child: const CustomPaint(
-                  painter: _SignUpPainter(), child: _SignUpWidget())),
+              child: CustomPaint(
+                  painter: const _BackgroundPainter(),
+                  child: _ChildWidget(fields: fields))),
         ),
       ),
     );
   }
 }
 
-class _SignUpWidget extends StatefulWidget {
-  const _SignUpWidget({
+class _ChildWidget extends StatelessWidget {
+  final List<Widget> fields;
+
+  const _ChildWidget({
     Key? key,
+    required this.fields,
   }) : super(key: key);
-
-  @override
-  State<_SignUpWidget> createState() => _SignUpWidgetState();
-}
-
-class _SignUpWidgetState extends State<_SignUpWidget> {
-  bool keepLogin = true;
-  ButtonStyle buttonTextStyle = ButtonStyle(
-      textStyle: MaterialStateProperty.all(AppTheme.text.medium),
-      shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
-      padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 100)));
-  double oauthIconSize = 48;
 
   @override
   Widget build(BuildContext context) {
@@ -93,47 +74,7 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
         SizedBox(
           width: min(size.width * 0.85, 300),
           child: Column(
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                    hintText: '電子郵件',
-                    prefixIcon: const Icon(Icons.account_circle),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(height: kSplitHeight * 2),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: '使用者名稱',
-                    prefixIcon: const Icon(Icons.account_circle),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(height: kSplitHeight * 2),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: '密碼',
-                    prefixIcon: const Icon(Icons.key),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(height: kSplitHeight * 3),
-              ElevatedButton(
-                style: buttonTextStyle,
-                onPressed: () {},
-                child: Text('註冊', style: AppTheme.text.medium),
-              ),
-              const SizedBox(height: kSplitHeight * 7),
-              Text('已經有帳號了嗎？', style: AppTheme.text.regular),
-              const SizedBox(height: kSplitHeight),
-              ElevatedButton(
-                style: buttonTextStyle,
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginPage.routeName);
-                },
-                child: Text('登入', style: AppTheme.text.medium),
-              ),
-            ],
+            children: fields,
           ),
         ),
       ],
@@ -141,8 +82,8 @@ class _SignUpWidgetState extends State<_SignUpWidget> {
   }
 }
 
-class _SignUpPainter extends CustomPainter {
-  const _SignUpPainter();
+class _BackgroundPainter extends CustomPainter {
+  const _BackgroundPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
